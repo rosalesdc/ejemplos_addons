@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="product.product" id="ilusiones_sales.producto_prepago">
+            <field name="name">Producto Prepago</field>
+            <field name="type">consu</field>
+         </record>
+         <record model="product.product" id="ilusiones_sales.producto_plan">
+            <field name="name">Producto Plan</field>
+            <field name="type">consu</field>
+         </record>
+         <record model="product.product" id="ilusiones_sales.producto_activacion">
+            <field name="name">Producto Activación</field>
+            <field name="type">consu</field>
+         </record>
+    </data>
+</odoo>

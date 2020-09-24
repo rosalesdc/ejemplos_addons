@@ -29,7 +29,8 @@ class SaleOrderLinesMods(models.Model):
     _inherit = 'sale.order.line'
 
     x_sale_type = fields.Selection(
-        [('prepago', 'Prepago'), 
+        [('no_tipo', 'Sin tipo asignado'),
+        ('prepago', 'Prepago'), 
         ('plan', 'Plan'),
         ('activacion', 'Activación'),], 'Tipo de venta',default='prepago' )
     x_serial_id = fields.Many2one('serial.number', string="Número de serie")
@@ -43,13 +44,6 @@ class SaleOrderLinesMods(models.Model):
         ('proteccion155', 'Protección 155'), ], 'Combo protección de equipo' )
     x_producto_almacenable_id = fields.Many2one('product.product', string="Producto almacenable", domain = [('type', '=', 'product')])
     x_producto_servicio_id = fields.Many2one('product.product', string="Servicio", domain = [('type', '=', 'service')])
-
-    # @api.onchange('x_producto_almacenable_id')
-    # def _in_stock_product(self):
-    #     quants = self.env['stock.quant'].search([('product_id', '=', self.x_producto_almacenable_id.id)], limit=1)
-    #     if quants.quantity < self.product_uom_qty:
-    #         raise UserError(
-    #             'Sin existencia para la cantidad seleccionada')
 
     #Verificar la existencia al crear las líneas
     def create(self, vals):
@@ -69,3 +63,14 @@ class SaleOrderLinesMods(models.Model):
                 'Sin existencia para la cantidad seleccionada wr: %s ' % (self.x_producto_almacenable_id.name))
         return res_id
 
+    #Calcular el tipo de venta de acuerdo al producto seleccionado
+    @api.depends('product_id')
+    def _compute_state(self):
+        if self.product_id.name == 'Activación':
+            self.x_sale_type = 'prepago'
+        elif self.product_id.name == 'Plan':
+            self.x_sale_type = 'plan'
+        elif self.product_id.name == 'Prepago':
+            self.x_sale_type = 'prepago'
+        else:
+            self.x_sale_type = 'no_tipo'

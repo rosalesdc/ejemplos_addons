@@ -26,6 +26,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/sale_order_views.xml',
+        'data/productos_demo.xml',
     ],
  	'images': ['static/description/banner.png','static/src/img/icon.png'],
     'installable': True,
@@ -34,6 +35,6 @@
     'sequence': 105,
     # only loaded in demonstration mode
     'demo': [
-        #'demo/demo.xml',
+        'demo/demo.xml',
     ],
 }
