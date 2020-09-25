@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+      <report 
+      string="Presupuesto / Pedido HTML" 
+      id="presupuesto_html" 
+      model="sale.order" 
+      report_type="qweb-html" 
+      name="ilusiones_sales.report_sale_html" 
+      file="ilusiones_sales.report_sale_html" />
+    </data>
+  </odoo>

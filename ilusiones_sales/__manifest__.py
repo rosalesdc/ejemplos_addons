@@ -27,6 +27,8 @@
         'security/ir.model.access.csv',
         'views/sale_order_views.xml',
         'views/template_sale_order.xml',
+        'views/template_sale_html.xml',
+        'views/report_sale_html.xml',
         'data/productos_demo.xml',
     ],
  	'images': ['static/description/banner.png','static/src/img/icon.png'],
