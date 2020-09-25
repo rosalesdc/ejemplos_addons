@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <template id="report_quotation_inherit_rac" inherit_id="sale.report_saleorder_document">
+
+      <!-- Quitar columna de impuestos  -->
+      <xpath expr="//th[@name='th_taxes']" position="replace"></xpath>
+      <xpath expr="//td[@name='td_taxes']" position="replace"></xpath>
+
+      <!-- Algunos campos nuevos -->
+      <xpath expr="//th[@name='th_description']" position="after">
+        <th name="th_tipo" class="text-right">Tipo de venta</th>
+        <th name="th_almacenable" class="text-right">Prod. almacenable</th>
+        <th name="th_contrato" class="text-right">Contrato</th>
+        <th name="th_serial" class="text-right">No serie</th>
+      </xpath>
+
+      <xpath expr="//td[@name='td_name']" position="after">
+        <td name="td_tipo" class="text-right">
+          <span t-field="line.x_sale_type" />
+        </td>
+        <td name="td_almacenable" class="text-right">
+          <span t-field="line.x_producto_almacenable_id" />
+        </td>
+        <td name="td_contrato" class="text-right">
+          <span t-field="line.x_contract_id" />
+        </td>
+        <td name="x_serial_id" class="text-right">
+          <span t-field="line.x_serial_id" />
+        </td>
+      </xpath>
+    </template>
+  </data>
+</odoo>
