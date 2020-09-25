@@ -42,7 +42,7 @@ class SaleOrderLinesMods(models.Model):
         [('ninguno', 'Ninguno'), 
         ('proteccion55', 'Protección 55'),
         ('proteccion105', 'Protección 105'),
-        ('proteccion155', 'Protección 155'), ], 'Combo protección de equipo' )
+        ('proteccion155', 'Protección 155'), ], 'Protección de equipo' )
     x_producto_almacenable_id = fields.Many2one('product.product', string="Producto almacenable", domain = [('type', '=', 'product')])
     x_producto_servicio_id = fields.Many2one('product.product', string="Servicio", domain = [('type', '=', 'service')])
 
