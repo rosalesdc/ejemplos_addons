@@ -85,3 +85,13 @@ class SaleOrderLinesMods(models.Model):
             self.x_sale_type = 'activacion'
         else:
             self.x_sale_type = 'no_tipo'
+
+    #Si el campo de producto cambia, se limpian los campos para evitar registrar campos en tipos de venta que no corresponda
+    @api.onchange('product_id')
+    def _reset_fields(self):
+        self.x_serial_id=None
+        self.x_contract_id=None
+        self.x_proteccion_equipo='ninguno'
+        self.x_producto_almacenable_id=None
+        self.x_producto_servicio_id=None
+
