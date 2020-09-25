@@ -10,13 +10,14 @@
                 <xpath expr="//tree" position="attributes">
                     <attribute name="editable" />
                 </xpath>
+
                 <!-- Campos agregados -->
-                <xpath expr="//page[@name='order_lines']/field/form/group/group/field[@name='product_id']" position="before">
+                <xpath expr="//page[@name='order_lines']/field/form/group/group/field[@name='product_id']" position="after">
                     <field name="x_sale_type" /> 
                     <field name="x_serial_id" attrs="{'invisible': [('x_sale_type', '=', 'plan')]}" /> 
                     <field name="x_contract_id" attrs="{'invisible': [('x_sale_type', '=', 'plan')]}" /> 
-                    <field name="x_precio_prepago" attrs="{'invisible': ['|',('x_sale_type', '=', 'plan'), ('x_sale_type','=','activacion')]}" /> 
-                    <field name="x_precio_renta_mensual" attrs="{'invisible': [('x_sale_type', '=', 'prepago')]}"/> 
+                    <!-- <field name="x_precio_prepago" attrs="{'invisible': ['|',('x_sale_type', '=', 'plan'), ('x_sale_type','=','activacion')]}" /> 
+                    <field name="x_precio_renta_mensual" attrs="{'invisible': [('x_sale_type', '=', 'prepago')]}"/>  -->
                     <field name="x_proteccion_equipo" attrs="{'invisible': ['|',('x_sale_type', '=', 'prepago'), ('x_sale_type','=','plan')]}"/> 
                     <field name="x_producto_almacenable_id" attrs="{'invisible': [('x_sale_type', '=', 'plan')]}" /> 
                     <field name="x_producto_servicio_id" attrs="{'invisible': [('x_sale_type', '=', 'prepago')]}"/> 
